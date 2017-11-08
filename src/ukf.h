@@ -64,9 +64,15 @@ public:
   ///* Augmented state dimension
   int n_aug_;
 
+  ///* Augmented sigma points dimension
+  int n_sig_;
+
   ///* Sigma point spreading parameter
   double lambda_;
 
+  ///* Measurement noise matrices
+  MatrixXd R_laser_;
+  MatrixXd R_radar_;
 
   /**
    * Constructor
@@ -102,6 +108,8 @@ public:
    * @param meas_package The measurement at k+1
    */
   void UpdateRadar(MeasurementPackage meas_package);
+private:
+  const double THRESHOLD = 0.0001;
 };
 
 #endif /* UKF_H */
